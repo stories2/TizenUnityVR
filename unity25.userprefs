@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Source\main_proc.cs">
     <Files>
-      <File FileName="Assets\Source\main_proc.cs" Line="44" Column="5" />
-      <File FileName="Assets\Source\ViewControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Source\Gyro.cs" Line="155" Column="9" />
+      <File FileName="Assets\Source\ViewControl.cs" Line="28" Column="71" />
+      <File FileName="Assets\Source\main_proc.cs" Line="86" Column="74" />
+      <File FileName="Assets\Source\Gyro.cs" Line="83" Column="3" />
       <File FileName="Assets\Source\logger.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

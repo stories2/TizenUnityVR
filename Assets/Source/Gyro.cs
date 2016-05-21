@@ -4,7 +4,6 @@ using System.Collections;
 public class Gyro : MonoBehaviour {
 
 	float[] mouse;
-	float half_screen_width,half_screen_height;
 	Gyroscope gyroscope;
 	int xyz = 3;
 	logger log;
@@ -32,7 +31,7 @@ public class Gyro : MonoBehaviour {
 			int i;
 			for(i=4;i<=6;i+=1)
 			{
-				set_mouse_pos(mouse, i - 3 , mouse);
+				mouse[i-xyz] = set_mouse_pos(mouse, i);
 				get_mouse_pos(mouse, i);
 			}
 			accel[0] = set_vec(accel[1]);
@@ -82,9 +81,6 @@ public class Gyro : MonoBehaviour {
 
 	void init()
 	{
-		half_screen_width = (float)Screen.width / 2;
-		half_screen_height = (float)Screen.height / 2;
-
 		Input.gyro.enabled = true;
 		gyroscope = Input.gyro;
 		gyroscope.enabled = true;
@@ -96,7 +92,7 @@ public class Gyro : MonoBehaviour {
 		int i;
 		for (i = 4; i <= 6; i += 1) {
 			get_mouse_pos (mouse, i);
-			set_mouse_pos (mouse, i - xyz, mouse);
+			mouse[i-xyz] = set_mouse_pos (mouse, i - xyz);
 		}
 		for (i = 0; i < 2; i += 1) {
 			accel [i] = new Vector3 ();
@@ -147,9 +143,9 @@ public class Gyro : MonoBehaviour {
 		}
 	}
 
-	void set_mouse_pos(float[] pos,int target,float[] src)
+	float set_mouse_pos(float[] src, int target)
 	{
-		pos [target] = src [target];
+		return src [target];
 	}
 
 	public bool is_platform_window()
