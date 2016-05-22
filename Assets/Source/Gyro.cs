@@ -53,6 +53,11 @@ public class Gyro : MonoBehaviour {
 		return vec;
 	}
 
+	public Vector3 return_init_vector()
+	{
+		return accel [2];
+	}
+
 	public Vector3 return_now_vector()
 	{
 		return accel [1];
@@ -61,6 +66,11 @@ public class Gyro : MonoBehaviour {
 	public Vector3 return_prev_vector()
 	{
 		return accel [0];
+	}
+
+	public Vector3 return_init_xyz()
+	{
+		return new Vector3 (mouse [7], mouse [8], mouse [9]);
 	}
 
 	public Vector3 return_prev_xyz()
@@ -88,15 +98,17 @@ public class Gyro : MonoBehaviour {
 		//1~3 : buffered mouse position
 		//4~6 : now mouse position
 		mouse = new float[10];
-		accel = new Vector3[2];
+		accel = new Vector3[3];
 		int i;
 		for (i = 4; i <= 6; i += 1) {
 			get_mouse_pos (mouse, i);
+			mouse [i + xyz] = set_mouse_pos (mouse, i);
 			mouse[i-xyz] = set_mouse_pos (mouse, i - xyz);
 		}
-		for (i = 0; i < 2; i += 1) {
+		for (i = 0; i < 3; i += 1) {
 			accel [i] = new Vector3 ();
 		}
+		accel[2] = get_vec();
 	}
 
 	void get_mouse_pos(float[] pos,int target)

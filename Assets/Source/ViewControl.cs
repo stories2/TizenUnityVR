@@ -18,6 +18,11 @@ public class ViewControl : MonoBehaviour {
 		set_camera_viewport (0.5F, 0.0F, 0.5F, 1.0F, 1);
 	}
 
+	public Vector3 get_camera_rotate(int target)
+	{
+		return new Vector3 (camera [target].transform.rotation.x, camera [target].transform.rotation.y, camera [target].transform.rotation.z);
+	}
+
 	void set_camera_viewport(float x, float y, float width, float height, int target)
 	{
 		camera [target].rect = new Rect (x, y, width, height);

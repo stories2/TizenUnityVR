@@ -45,13 +45,14 @@ public class main_proc : MonoBehaviour {
 			vec3 = gyroscope.return_now_vector ();
 
 		//rotate calculation
-		int i;
+		int i,upper = 5;
 		for (i = 0; i < 2; i += 1) {
 			if (gyroscope.is_platform_window ()) {
 				view.set_camera_rotate (calculate_rotate (gyroscope.return_prev_xyz (), gyroscope.return_now_xyz ()), i);
 			} 
 			else {
-				view.set_camera_rotate (calculate_rotate (level_upper (gyroscope.return_prev_vector (), 100), level_upper (gyroscope.return_now_vector (), 100)), i);
+				//view.set_camera_rotate (calculate_rotate (level_upper (gyroscope.return_prev_vector (), 100), level_upper (gyroscope.return_now_vector (), 100)), i);
+				view.set_camera_rotate (calculate_rotate (level_upper (gyroscope.return_init_vector (), upper), level_upper (gyroscope.return_now_vector (), upper)), i);
 			}
 		}
 
@@ -82,8 +83,8 @@ public class main_proc : MonoBehaviour {
 			//log.push ("p " + prev_vec3.x + " " + prev_vec3.y + " " + prev_vec3.z + " n " + now_vec3.x + " " + now_vec3.y + " " + now_vec3.z + " d " + vec3.x + " " + vec3.y + " " + vec3.z, "main_proc");
 		} 
 		else {
-			
-			vec3 = new Vector3 (now_vec3.z - prev_vec3.z, now_vec3.x - prev_vec3.x, get_angle (now_vec3.x - prev_vec3.x, now_vec3.y - prev_vec3.y));
+			vec3 = new Vector3 (-(prev_vec3.z - now_vec3.z), -(prev_vec3.x - now_vec3.x), prev_vec3.x - now_vec3.x);
+			//vec3 = new Vector3 (now_vec3.z - prev_vec3.z, now_vec3.x - prev_vec3.x, get_angle (now_vec3.x - prev_vec3.x, now_vec3.y - prev_vec3.y));
 		}
 		return vec3;
 	}
