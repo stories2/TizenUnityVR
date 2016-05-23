@@ -23,7 +23,7 @@ public class main_proc : MonoBehaviour {
 		gyroscope = gameObject.AddComponent<Gyro> ();
 		view = gameObject.AddComponent<ViewControl> ();
 
-		log.push ("init ok", "main_proc");
+
 	}
 	
 	// Update is called once per frame
@@ -35,6 +35,8 @@ public class main_proc : MonoBehaviour {
 			gyroscope.set_logger (log);
 			view.set_camera (main_camera,0);
 			view.set_camera (sub_camera,1);
+
+			log.push ("init ok", "main_proc");
 		}
 		//process
 
@@ -45,7 +47,7 @@ public class main_proc : MonoBehaviour {
 			vec3 = gyroscope.return_now_vector ();
 
 		//rotate calculation
-		int i,upper = 5;
+		int i,upper = 3;
 		for (i = 0; i < 2; i += 1) {
 			if (gyroscope.is_platform_window ()) {
 				view.set_camera_rotate (calculate_rotate (gyroscope.return_prev_xyz (), gyroscope.return_now_xyz ()), i);

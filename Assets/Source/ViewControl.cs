@@ -31,7 +31,9 @@ public class ViewControl : MonoBehaviour {
 	public void set_camera_rotate(Vector3 vec3, int target)
 	{
 		log.push ("" + vec3.x + " " + vec3.y + " " + vec3.z, "ViewControl");
-		camera [target].transform.Rotate (vec3);
+		camera [target].transform.Rotate (-vec3.x, 0, 0, Space.World);
+		camera [target].transform.Rotate (0, -vec3.y, 0, Space.Self);
+	//	camera [target].transform.Rotate (0, 0, vec3.z);
 	}
 
 	public void set_logger(logger log)
