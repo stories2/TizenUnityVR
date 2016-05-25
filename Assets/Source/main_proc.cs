@@ -47,14 +47,14 @@ public class main_proc : MonoBehaviour {
 			vec3 = gyroscope.return_now_vector ();
 
 		//rotate calculation
-		int i,upper = 3;
+		int i,upper = 75;
 		for (i = 0; i < 2; i += 1) {
 			if (gyroscope.is_platform_window ()) {
 				view.set_camera_rotate (calculate_rotate (gyroscope.return_prev_xyz (), gyroscope.return_now_xyz ()), i);
 			} 
 			else {
 				//view.set_camera_rotate (calculate_rotate (level_upper (gyroscope.return_prev_vector (), 100), level_upper (gyroscope.return_now_vector (), 100)), i);
-				view.set_camera_rotate (calculate_rotate (level_upper (gyroscope.return_init_vector (), upper), level_upper (gyroscope.return_now_vector (), upper)), i);
+				view.set_camera_rotate (calculate_rotate (level_upper (gyroscope.return_prev_vector(), upper), level_upper (gyroscope.return_now_vector (), upper)), i);
 			}
 		}
 
